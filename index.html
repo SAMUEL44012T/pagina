@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Primera Página Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: #800080; /* morado */
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    footer {
+      background: #800080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .contenedor {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem;
+      flex-wrap: wrap; /* permite que se acomoden */
+    }
+    .lado {
+      width: 20%;
+      background: #e0e0e0;
+      padding: 1rem;
+      border-radius: 8px;
+      display: none; /* oculto al inicio */
+      word-wrap: break-word;
+    }
+    .centro {
+      width: 55%;
+      text-align: center;
+    }
+    button {
+      background: #800080;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 10px;
+    }
+    button:hover {
+      background: #9932CC;
+    }
+
+    /* 📱 Ajustes para pantallas pequeñas */
+    @media (max-width: 600px) {
+      .contenedor {
+        flex-direction: column; /* apila los bloques */
+        align-items: center;
+      }
+      .lado, .centro {
+        width: 90%; /* ocupan casi todo el ancho */
+        margin-bottom: 1rem;
+      }
+      footer {
+        position: relative; /* evita que tape botones en móvil */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hola ¿cómo estás? Espero que bien</h1>
+  </header>
+
+  <div class="contenedor">
+    <div class="lado" id="izquierda">
+      <p>
+        Tengo mil cosas que decirte. Por ejemplo, llegó un punto donde te comencé a hablar lindo porque sí y comencé a sentir algo por ti.
+        Y la verdad, nunca pensé que te volvieras tan importante para mí en tan poco tiempo. Llegó un punto donde me acostumbré a siempre ver tus mensajes, a hablar contigo todos los días y a esperar cualquier notificación tuya.
+        <br><br>
+        Pero también llegó un momento donde todo dejó de fluir. Me dejaste de hablar y yo quedé como wtf, pero tú me respondías los estados y si antes ya estaba perdido, después quedé peor.
+        <br><br>
+        La verdad no sé si yo te gusto o no, o si te gusta otra persona, pero estoy muy confundido. Porque de 10 cosas que pienso en el día, 5 son sobre ti. Y sinceramente ya no sé qué hacer con todo esto que siento.
+      </p>
+    </div>
+
+    <div class="centro">
+      <p>Esta es la primera vez que hago esto......</p>
+      <button onclick="mostrar('izquierda')">Mostrar izquierda</button>
+      <button onclick="mostrar('centroTexto')">Mostrar centro</button>
+      <button onclick="mostrar('derecha')">Mostrar derecha</button>
+
+      <div id="centroTexto" style="display:none; margin-top:20px; background:#d8bfd8; padding:1rem; border-radius:8px;">
+        <p>
+          Y la verdad solo quiero que hables con la verdad, para saber si me arriesgo a entregarlo todo por ti...
+        </p>
+      </div>
+    </div>
+
+    <div class="lado" id="derecha">
+      <p>
+        Entonces dime qué hago… si dejamos todo así o si de verdad intentamos algo más..
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Mi Página Web</p>
+  </footer>
+
+  <script>
+    function mostrar(lado) {
+      document.getElementById("izquierda").style.display = "none";
+      document.getElementById("derecha").style.display = "none";
+      document.getElementById("centroTexto").style.display = "none";
+
+      document.getElementById(lado).style.display = "block";
+      // 👇 en móvil, al mostrar texto largo, hacemos scroll automático
+      document.getElementById(lado).scrollIntoView({behavior: "smooth"});
+    }
+  </script>
+</body>
+</html>
+
